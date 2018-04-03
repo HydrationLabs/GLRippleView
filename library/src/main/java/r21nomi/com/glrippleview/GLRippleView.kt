@@ -3,6 +3,7 @@ package r21nomi.com.glrippleview
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.opengl.GLSurfaceView
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -87,13 +88,17 @@ class GLRippleView(context: Context, attrs: AttributeSet? = null) : GLSurfaceVie
         return true
     }
 
-    fun setBackgroundImage(attrs: AttributeSet?) {
+    private fun setBackgroundImage(attrs: AttributeSet?) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.GLRippleView)
 
         typedArray.getDrawable(R.styleable.GLRippleView_backgroundImage)?.let { drawable ->
-            bgImage = (drawable as BitmapDrawable).bitmap
+            setBackgroundImage(drawable)
             typedArray.recycle()
         }
+    }
+
+    fun setBackgroundImage(image: Drawable?) {
+        bgImage = (image as BitmapDrawable).bitmap
     }
 
     interface Listener {
