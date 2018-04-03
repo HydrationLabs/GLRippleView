@@ -87,7 +87,7 @@ class GLRippleView(context: Context, attrs: AttributeSet? = null) : GLSurfaceVie
         return true
     }
 
-    private fun setBackgroundImage(attrs: AttributeSet?) {
+    fun setBackgroundImage(attrs: AttributeSet?) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.GLRippleView)
 
         typedArray.getDrawable(R.styleable.GLRippleView_backgroundImage)?.let { drawable ->
